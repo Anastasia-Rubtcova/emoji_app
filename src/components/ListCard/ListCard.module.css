@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px
+}
+
+.item {
+    border: 0.3px solid gray;
+    list-style: none
+}
+
+.keywords {
+    font-size: 12px
+}
