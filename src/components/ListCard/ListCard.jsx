@@ -14,20 +14,25 @@ export function Emoji() {
     }, [])
 
     const cards = emoji
-        .filter(card => card.title.includes(input))
+        .filter(card => card.title.includes(input) || card.keywords.includes(input))
         .map(item => (
             <div key={item.id} className={cls.item}>
-                <div>{item.title}</div>
-                <div>{item.symbol}</div>
+                <div className={cls.symbol}>{item.symbol}</div>
+                <div className={cls.symbolTitle}>{item.title}</div>
                 <div className={cls.keywords}>{item.keywords}</div>
             </div>
         ))
 
     return (
         <div className={cls.container}>
-            <div><h1>Emoji</h1></div>
-            <div><input type="text" onChange={event => setInput(event.target.value)} placeholder="find emoji" /></div>
-            <div><div className={cls.cards}>{cards}</div></div>
+            <div className={cls.colorContainer}>
+                <h1 className={cls.title}>Emoji Finder</h1>
+                <p className={cls.subtitle}>Find emoji by keywords</p>
+            </div>
+            <div className={cls.cardsContainer}>
+                <input type="text" className={cls.input} onChange={event => setInput(event.target.value)} placeholder="Placeholder" />
+                <div className={cls.cards}>{cards}</div>
+            </div>
         </div>
     )
 
