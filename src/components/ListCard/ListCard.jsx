@@ -7,14 +7,32 @@ export function Emoji() {
     console.log(emoji)
     const API_URL = 'http://localhost:3000/emoji'
 
+    function getUniqueKeywords(data) {
+        return data.map(e => {
+            let result = [...new Set(e.keywords.split(' '))].join(" ")
+
+            return {
+                ...e,
+                keywords: result
+            }
+        })
+    }
+
+
     useEffect(() => {
         fetch(API_URL)
             .then(data => data.json())
             .then(data => setEmoji(data))
     }, [])
-
-    const cards = emoji
-        .filter(card => card.title.includes(input) || card.keywords.includes(input))
+    console.log(getUniqueKeywords(emoji))
+    const cards = getUniqueKeywords(emoji)
+        .filter(card => card.title.includes(input) ||
+            card.title.toUpperCase().includes(input) ||
+            card.title.toLowerCase().includes(input) ||
+            card.keywords.includes(input) ||
+            card.keywords.toUpperCase().includes(input) ||
+            card.keywords.toLowerCase().includes(input)
+        )
         .map(item => (
             <div key={item.id} className={cls.item}>
                 <div className={cls.symbol}>{item.symbol}</div>
@@ -30,7 +48,7 @@ export function Emoji() {
                 <p className={cls.subtitle}>Find emoji by keywords</p>
             </div>
             <div className={cls.cardsContainer}>
-                <input type="text" className={cls.input} onChange={event => setInput(event.target.value)} placeholder="Placeholder" />
+                <input type="text" className={cls.input} onChange={event => setInput(event.target.value.trim())} placeholder="Placeholder" />
                 <div className={cls.cards}>{cards}</div>
             </div>
         </div>

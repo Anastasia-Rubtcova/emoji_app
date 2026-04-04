@@ -72,11 +72,12 @@
 .input {
     max-width: 788px;
     width: 100%;
-    padding: 22px 0 21px 32px;
+    padding: 22px 32px;
     border: none;
     position: absolute;
     font-size: 24px;
-    right: 310px;
+    right: 50%;
+    transform: translateX(50%);
     top: 263px
 }
 
