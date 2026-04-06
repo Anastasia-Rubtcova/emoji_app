@@ -26,12 +26,7 @@ export function Emoji() {
     }, [])
     console.log(getUniqueKeywords(emoji))
     const cards = getUniqueKeywords(emoji)
-        .filter(card => card.title.includes(input) ||
-            card.title.toUpperCase().includes(input) ||
-            card.title.toLowerCase().includes(input) ||
-            card.keywords.includes(input) ||
-            card.keywords.toUpperCase().includes(input) ||
-            card.keywords.toLowerCase().includes(input)
+        .filter(card => card.title.toLowerCase().includes(input.toLowerCase()) || card.keywords.toLowerCase().includes(input.toLowerCase())
         )
         .map(item => (
             <div key={item.id} className={cls.item}>
