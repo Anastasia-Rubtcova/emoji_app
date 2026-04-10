@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import cls from "./ListCard.module.css"
+import { Card } from "../Card/Card";
 
 export function Emoji() {
     const [emoji, setEmoji] = useState([])
@@ -28,13 +29,7 @@ export function Emoji() {
     const cards = getUniqueKeywords(emoji)
         .filter(card => card.title.toLowerCase().includes(input.toLowerCase()) || card.keywords.toLowerCase().includes(input.toLowerCase())
         )
-        .map(item => (
-            <div key={item.id} className={cls.item}>
-                <div className={cls.symbol}>{item.symbol}</div>
-                <div className={cls.symbolTitle}>{item.title}</div>
-                <div className={cls.keywords}>{item.keywords}</div>
-            </div>
-        ))
+        .map(item => <Card key={item.id} card={item}/>)
 
     return (
         <div className={cls.container}>

@@ -19,14 +19,6 @@
     gap: 19px
 }
 
-.item {
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: white;
-}
-
 .title {
     text-align: center;
     color: #CFF4FC;
@@ -43,30 +35,6 @@
     font-size: 21px;
     line-height: 36px;
     margin-top: 4px;
-}
-
-.keywords {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: center;
-    color: #3F444A;
-}
-
-.symbol {
-    font-size: 48px;
-    margin-bottom: 18px;
-}
-
-.symbolTitle {
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 28px;
-    letter-spacing: 0%;
-    text-decoration: underline;
-    text-decoration-style: solid;
-    margin-bottom: 12px;
 }
 
 .input {
